@@ -21,6 +21,7 @@ colourB = (255, 202, 96)
 colourC = (255, 255, 255)
 
 # Create buttons for Starting the Visualiser and Exiting the Application
+# Added button for Mel Spectrogram
 button_default = pygame.image.load("ButtonBlack.png")
 button_hover = pygame.image.load("ButtonHover.png")
 button_quit = pygame.image.load("ButtonQuit.png")
@@ -123,6 +124,7 @@ def draw_waves(display):
 
     pygame.draw.lines(display, [255, 255, 255], False, plotPointsD, 10 )
 
+# this function is for displaying the Mel Spectrogram
 def display_spectrogram(filename):
     # load our audio file using librosa
     y, sr = librosa.load(filename)
@@ -137,6 +139,7 @@ def display_spectrogram(filename):
     # matplotlib is used here (plt) to  get a visual representation (plt.figure) of the
     # Mel Spectrogram using librosa.display.specshow, plt.colour bar to add a colour bar,
     # plt.savefig to store image from BitesIO. It treats binary image data like a file.
+    
     plt.figure(figsize=(10, 5))
     librosa.display.specshow(spectrogram, x_axis='time', y_axis='mel', sr=sr, hop_length=512, cmap='viridis')
     plt.colorbar(format='%+2.0f dB')
